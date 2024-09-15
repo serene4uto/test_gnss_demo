@@ -1,0 +1,43 @@
+gnss_eval:
+  ros__parameters:
+    ground_truth:
+      latitude: 35.97237383
+      longitude: 128.93865707
+      altitude: 0.0
+    log_enable: true
+
+ntrip_client:
+  ros__parameters:
+    # Required parameters used to connect to the NTRIP server
+    host: www.gnssdata.or.kr
+    port: 2101
+    mountpoint: KUNW-RTCM32
+    # Optional parameter that will set the NTRIP version in the initial HTTP request to the NTRIP caster.
+    ntrip_version: None
+    # If this is set to true, we will read the username and password and attempt to authenticate. If not, we will attempt to connect unauthenticated
+    authenticate: true
+    # If authenticate is set the true, we will use these to authenticate with the server
+    username: kde1054@naver.com
+    password: gnss
+    # Whether to connect with SSL. cert, key, and ca_cert options will only take effect if this is true
+    ssl: false
+    # If the NTRIP caster uses cert based authentication, you can specify the cert and keys to use with these options
+    cert: None
+    key: None
+    # If the NTRIP caster uses self signed certs, or you need to use a different CA chain, specify the path to the file here
+    ca_cert: None
+    # Not sure if this will be looked at by other nodes, but this frame ID will be added to the RTCM messages published by this node
+    rtcm_frame_id: 'odom'
+    # Optional parameters that will allow for longer or shorter NMEA messages. Standard max length for NMEA is 82
+    nmea_max_length: 82
+    nmea_min_length: 3
+    # Use this parameter to change the type of RTCM message published by the node. Defaults to "mavros_msgs", but we also support "rtcm_msgs"
+    rtcm_message_package: 'rtcm_msgs'
+    # Will affect how many times the node will attempt to reconnect before exiting, and how long it will wait in between attempts when a reconnect occurs
+    reconnect_attempt_max: 10
+    reconnect_attempt_wait_seconds: 5
+    # How many seconds is acceptable in between receiving RTCM. If RTCM is not received for this duration, the node will attempt to reconnect
+    rtcm_timeout_seconds: 4
+
+    
+    
